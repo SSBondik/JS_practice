@@ -27,4 +27,14 @@ let numberOfFilms = [];
 
 numberOfFilms[0] = prompt('Сколько фильмов вы уже посмотрели?', '');
 
-console.log(numberOfFilms);
+// console.log(numberOfFilms);
+
+let personalMovieDB = {
+    count: numberOfFilms[0],
+    movies: {},
+    actors: {},
+    genres: [],
+    privat: false
+};
+
+console.log(personalMovieDB.count);
