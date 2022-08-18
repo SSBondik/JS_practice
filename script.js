@@ -99,16 +99,16 @@
 // }
 // console.log(arrayOfNumbers);
 
-// const arr = [3, 5, 8, 16, 20, 23, 50];
-// const result = [];
+const arr = [3, 5, 8, 16, 20, 23, 50];
+const result = [];
 
-// for (let i = 0; i < arr.length; i++) {
-//     for (let j = arr[i]; j <= arr[i]; j++) {
-//         result[i] = j;
-//         break;
-//     }
-// }
-// console.log(result);
+for (let i = 0; i < arr.length; i++) {
+    for (let j = arr[i]; j <= arr[i]; j++) {
+        result[i] = j;
+        break;
+    }
+}
+console.log(result);
 
 
 const data = [5, 10, 'Shopping', 20, 'Homework'];
@@ -122,3 +122,13 @@ for(let i = 0; i < data.length; i++) {
 }
 console.log(data);
 
+// const data = [5, 10, 'Shopping', 20, 'Homework'];
+// const result = [];
+
+for(let i = 4; i >= 0; i--) {
+    for (let j = 4 - i; j <= 4; j++) {
+        result[j] = data[i];
+    }
+    
+}
+console.log(result);
