@@ -99,36 +99,57 @@
 // }
 // console.log(arrayOfNumbers);
 
-const arr = [3, 5, 8, 16, 20, 23, 50];
-const result = [];
-
-for (let i = 0; i < arr.length; i++) {
-    for (let j = arr[i]; j <= arr[i]; j++) {
-        result[i] = j;
-        break;
-    }
-}
-console.log(result);
-
-
-const data = [5, 10, 'Shopping', 20, 'Homework'];
-
-for(let i = 0; i < data.length; i++) {
-    if (typeof(data[i]) === 'number') {
-        data[i] = data[i] * 2;
-    } else if (typeof(data[i]) === 'string') {
-        data[i] = data[i] + " - done";
-    }
-}
-console.log(data);
-
-// const data = [5, 10, 'Shopping', 20, 'Homework'];
+// const arr = [3, 5, 8, 16, 20, 23, 50];
 // const result = [];
 
-for(let i = 4; i >= 0; i--) {
-    for (let j = 4 - i; j <= 4; j++) {
-        result[j] = data[i];
-    }
+// for (let i = 0; i < arr.length; i++) {
+//     for (let j = arr[i]; j <= arr[i]; j++) {
+//         result[i] = j;
+//         break;
+//     }
+// }
+// console.log(result);
+
+
+// const data = [5, 10, 'Shopping', 20, 'Homework'];
+
+// for(let i = 0; i < data.length; i++) {
+//     if (typeof(data[i]) === 'number') {
+//         data[i] = data[i] * 2;
+//     } else if (typeof(data[i]) === 'string') {
+//         data[i] = data[i] + " - done";
+//     }
+// }
+// console.log(data);
+
+// // const data = [5, 10, 'Shopping', 20, 'Homework'];
+// // const result = [];
+
+// for(let i = 4; i >= 0; i--) {
+//     for (let j = 4 - i; j <= 4; j++) {
+//         result[j] = data[i];
+//     }
     
+// }
+// console.log(result);
+//      *
+//     ***
+//    *****
+//   *******
+//  *********
+// ***********
+
+const lines = 5;
+let result = '';
+
+for (let i = 1; i < 7; i++) { //строка
+
+    for (let j = lines; j >= i; j--) { //отступ
+        result += ' ';
+    }
+    for(let k = 1; k < i*2; k++) { //звёзды
+        result += "*";
+    }
+    result += "\n"; //перенос
 }
 console.log(result);
