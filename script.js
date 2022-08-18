@@ -87,14 +87,38 @@
 //         console.log(i);
 //     }
 // }
-const arrayOfNumbers = [];
+// const arrayOfNumbers = [];
 
-for (let i = 0; i < 6; i++) {
+// for (let i = 0; i < 6; i++) {
 
-    for (let j = 5+i; j < 11; j++) {
-        arrayOfNumbers[i] = j;
-        break;
-    }
+//     for (let j = 5+i; j < 11; j++) {
+//         arrayOfNumbers[i] = j;
+//         break;
+//     }
     
+// }
+// console.log(arrayOfNumbers);
+
+// const arr = [3, 5, 8, 16, 20, 23, 50];
+// const result = [];
+
+// for (let i = 0; i < arr.length; i++) {
+//     for (let j = arr[i]; j <= arr[i]; j++) {
+//         result[i] = j;
+//         break;
+//     }
+// }
+// console.log(result);
+
+
+const data = [5, 10, 'Shopping', 20, 'Homework'];
+
+for(let i = 0; i < data.length; i++) {
+    if (typeof(data[i]) === 'number') {
+        data[i] = data[i] * 2;
+    } else if (typeof(data[i]) === 'string') {
+        data[i] = data[i] + " - done";
+    }
 }
-console.log(arrayOfNumbers);
+console.log(data);
+
