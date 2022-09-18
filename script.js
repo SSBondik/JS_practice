@@ -328,13 +328,24 @@
 
 
 
-function calculateVolumeAndArea(length) {
- if(typeof(length) !== 'number' || length < 0 || !Number.isInteger(length)) {
-    return "При вычислении произошла ошибка";
- }
- let V = length * length * length;
- let S = 6 * (length * length);
- return `Объем куба: ${V}, площадь всей поверхности: ${S}`;
+// function calculateVolumeAndArea(length) {
+//  if(typeof(length) !== 'number' || length < 0 || !Number.isInteger(length)) {
+//     return console.log("При вычислении произошла ошибка");
+//  }
+//  let V = length * length * length;
+//  let S = 6 * (length * length);
+//  return console.log(`Объем куба: ${V}, площадь всей поверхности: ${S}`);
 
+// }
+// calculateVolumeAndArea(8);
+
+
+function getCoupeNumber(room) {
+if(typeof(room) !== 'number' || !Number.isInteger(room) || room < 0) {
+    return "Ошибка. Проверьте правильность введенного номера места";
 }
-calculateVolumeAndArea(81);
+if (room === 0 || room > 36) {
+    return "Таких мест в вагоне не существует";
+}
+return Math.ceil(room / 4);
+}
