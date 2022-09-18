@@ -337,15 +337,63 @@
 //  return console.log(`Объем куба: ${V}, площадь всей поверхности: ${S}`);
 
 // }
-// calculateVolumeAndArea(8);
+// calculateVolumeAndArea(78);
 
 
-function getCoupeNumber(room) {
-if(typeof(room) !== 'number' || !Number.isInteger(room) || room < 0) {
-    return "Ошибка. Проверьте правильность введенного номера места";
+// function getCoupeNumber(room) {
+// if(typeof(room) !== 'number' || !Number.isInteger(room) || room < 0) {
+//     return "Ошибка. Проверьте правильность введенного номера места";
+// }
+// if (room === 0 || room > 36) {
+//     return "Таких мест в вагоне не существует";
+// }
+// return Math.ceil(room / 4);
+// }
+// getCoupeNumber(36);
+
+// function getTimeFromMinutes(min) {
+//     if(typeof(min) !== 'number' || min < 0 || !Number.isInteger(min)) {
+//         return console.log("Ошибка, проверьте данные");
+//     }
+//     if(min < 60) {
+//         return console.log(`Это 0 часов и ${min} минут`);
+//     }
+//     if(min >= 60 && min < 120) {
+//         return console.log(`Это 1 час и ${min % 60} минут`);
+//     }
+//     if (min >= 120 && min < 300) {
+//         for(let i = Math.trunc(min / 60) ; i < 5; i++) {
+//             return console.log(`Это ${i} часа и ${min % 60} минут`);
+//         }
+//     }
+//     if (min >= 300 && min < 1440) {
+//         for(let k = Math.trunc(min / 60) ; k < 25; k++) {
+//             return console.log(`Это ${k} часов и ${min % 60} минут`);
+//         }
+//     }
+// }
+// getTimeFromMinutes(1421);
+
+// function findMaxNumber(a, b, c, d) {
+//     if (
+//         typeof (a) !== 'number' ||
+//         typeof (b) !== 'number' ||
+//         typeof (c) !== 'number' ||
+//         typeof (d) !== 'number') {
+//         return 0;
+//     } else {
+//         return Math.max(a, b, c, d);
+//     }
+// }
+
+
+function fib(num) {
+    let result = [0, 1, 1];
+    if (typeof(num) !== 'number') {
+        return '';
+    }
+
 }
-if (room === 0 || room > 36) {
-    return "Таких мест в вагоне не существует";
-}
-return Math.ceil(room / 4);
-}
+fib(7);
+let result = '0 1 1';
+console.info(result);
