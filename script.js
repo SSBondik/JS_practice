@@ -279,7 +279,7 @@
 
 // function rememberMyFilms() {
 //     for(let  i = 0; i < 2; i++) {
-//         const a = prompt('Один из последних просмотренных фильмов?', ''),
+//         const a = prompt('Один из последних просмотренных фильмов?', '').trim(),
 //               b = prompt('На сколько оцените его?', '');
                   
 //         if (a != null && b != null && a != '' && b != '' && a.length < 50 ) {
@@ -292,7 +292,7 @@
 //     } 
         
 // }
-// // rememberMyFilms();
+// rememberMyFilms();
 
 
 // function detectPersonalLevel() {
@@ -387,13 +387,110 @@
 // }
 
 
-function fib(num) {
-    let result = [0, 1, 1];
-    if (typeof(num) !== 'number') {
-        return '';
-    }
+// function fib(num) {
+//     if (typeof (num) !== 'number' || num <= 0 || Number.isInteger(num)) {
+//         return '';
+//     }
+//     let result = '';
+//     let first = 0;
+//     let second = 1;
 
+//     for (let i = 0; i < num; i++) {
+//         if (i + 1 === num) {
+//             result += `${first}`;
+//         } else {
+//             result += `${first} `;
+//         }
+
+//         let third = first + second;
+//         first = second;
+//         second = third;
+//     }
+//     return result;
+// }
+
+
+// const obj = {
+//     user: 'Bondik',
+//     privat: false,
+//     data : {
+//         name: 'Alex',
+//         surname: 'Bondarenko',
+//         age: 21
+//     }
+// };
+
+// console.log(Object.values(obj));
+
+// for (let key in obj) {
+//     if(typeof(obj[key]) === 'object') {
+//         for (let i in obj[key]) {
+//             console.log(`Свойство ${i} имеет значение ${obj[key][i]}`);
+//         }
+//     } else {
+//         console.log(`Свойство ${key} имеет значение ${obj[key]}`);
+//     } 
+// }
+
+// const str = prompt("Имена", "");
+// const nameFriends = str.split(", "); //["Саша", "Витя", "Андрей", "Франц"]
+// // console.log(nameFriends.join("; ")); //Саша; Витя; Андрей; Франц
+// console.log(nameFriends.sort()); // ["Андрей", "Витя", "Саша", "Франц"]
+
+// const number = [0, 7, 3, 4, 79, 12, 52 ];
+// console.log(number.sort()); //[0, 12,  3, 4, 52,  7, 79]
+// console.log(number.sort(compareNum)); //[0,  3,  4, 7, 12, 52, 79]
+
+// function compareNum(a, b) {
+//     return a - b;
+// }
+
+const personalPlanPeter = {
+    name: "Peter",
+    age: "29",
+    skills: {
+        languages: ['ru', 'eng'],
+        programmingLangs: {
+            js: '20%',
+            php: '10%'
+        },
+        exp: '1 month'
+    },
+    showAgeAndLangs(plan) {
+        const {age} = plan;
+        const {languages} = plan.skills;
+
+        let str = `Мне ${age} и я владею языками: `;
+
+        languages.forEach(function(lang) {
+            str += `${lang.toUpperCase()} `;
+        });
+
+        return str;
+    }
+    
+};
+console.log(personalPlanPeter.showAgeAndLangs(personalPlanPeter));
+
+function showExperience(plan) {
+    const {exp} = plan.skills;
+    return exp;
 }
-fib(7);
-let result = '0 1 1';
-console.info(result);
+console.log(showExperience(personalPlanPeter));
+
+function showProgrammingLangs(plan) {
+    const {programmingLangs} = plan.skills;
+
+    let result = '';
+
+    if(programmingLangs === {}) {
+        return '';
+    } else {
+        for(let key in programmingLangs) {
+            result += `Язык ${key} изучен на ${programmingLangs[key]}\n`;
+        }
+    }
+    return result;
+}
+
+console.log(showProgrammingLangs(personalPlanPeter));
