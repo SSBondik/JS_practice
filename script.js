@@ -516,21 +516,23 @@
 // }
 // standardizeStrings(favoriteCities);
 
-// const someString = 'This is some strange string';
+const someString = 'This is some strange string';
 
-// function reverse(str) {
-//     if(typeof(str) !== 'string') {
-//         return "Ошибка!";
-//     }
-//     let arr = [];
-//     for(let i = 0; i < str.length; i++) {
-//         arr[i] = str[i];  
-//     }
-//     let arrReverse = arr.reverse();
-//     let result = arrReverse.join('');
-//     return result;
-// }
-// console.log(reverse(someString));
+function reverse(str) {
+    if(typeof(str) !== 'string') {
+        return "Ошибка!";
+    }
+    return str.split('').reverse().join('');
+
+    // let arr = [];
+    // for(let i = 0; i < str.length; i++) {
+    //     arr[i] = str[i];  
+    // }
+    // let arrReverse = arr.reverse();
+    // let result = arrReverse.join('');
+    // return result;
+}
+console.log(reverse(someString));
 
 
 const baseCurrencies = ['USD', 'EUR'];
