@@ -495,23 +495,59 @@
 
 // console.log(showProgrammingLangs(personalPlanPeter));
 
-const family = ['Peter', 'Ann', 'Alex', 'Linda'];
+// const family = ['Peter', 'Ann', 'Alex', 'Linda'];
 
-function showFamily(arr) {
-    if( arr.length === 0 ) {
-        return "Семья пуста";
-    } else {
-        return `Семья состоит из: ${arr.join(" ")}`;
-    }
+// function showFamily(arr) {
+//     if( arr.length === 0 ) {
+//         return "Семья пуста";
+//     } else {
+//         return `Семья состоит из: ${arr.join(" ")}`;
+//     }
     
-}
-console.log(showFamily(family));
+// }
+// console.log(showFamily(family));
 
-const favoriteCities = ['liSBon', 'ROME', 'miLan', 'Dublin'];
+// const favoriteCities = ['liSBon', 'ROME', 'miLan', 'Dublin'];
 
-function standardizeStrings(arr) {
-    arr.forEach(city => {
-        console.log(city.toLowerCase());
-    });
+// function standardizeStrings(arr) {
+//     arr.forEach(city => {
+//         console.log(city.toLowerCase());
+//     });
+// }
+// standardizeStrings(favoriteCities);
+
+// const someString = 'This is some strange string';
+
+// function reverse(str) {
+//     if(typeof(str) !== 'string') {
+//         return "Ошибка!";
+//     }
+//     let arr = [];
+//     for(let i = 0; i < str.length; i++) {
+//         arr[i] = str[i];  
+//     }
+//     let arrReverse = arr.reverse();
+//     let result = arrReverse.join('');
+//     return result;
+// }
+// console.log(reverse(someString));
+
+
+const baseCurrencies = ['USD', 'EUR'];
+const additionalCurrencies = ['UAH', 'RUB', 'CNY'];
+
+function availableCurr(arr, missingCurr) {
+    let str = 'Доступные валюты:\n';
+    if(arr.length === 0) {
+        return 'Нет доступных валют';
+    }
+    for(let i = 0; i < arr.length; i++) {
+        if(arr[i] === missingCurr) {
+            continue;
+        } else {
+            str += `${arr[i]}\n`;
+        }
+    }
+    return str;
 }
-standardizeStrings(favoriteCities);
+console.log(availableCurr(['UAH', 'RUB', 'CNY'], 'RUB'));
