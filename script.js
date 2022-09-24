@@ -569,88 +569,141 @@
 при помощи метода forEach вывести в консоль сообщения в таком виде:
 "Любимый жанр #(номер по порядку, начиная с 1) - это (название из массива)"*/
 
-// Код возьмите из предыдущего домашнего задания
 
+// const personalMovieDB = {
+//     count: 0,
+//     movies: {},
+//     actors: {},
+//     genres: [],
+//     privat: false,
+//     start: function() {
+//         personalMovieDB.count = +prompt('Сколько фильмов вы уже посмотрели?', '');
 
-const personalMovieDB = {
-    count: 0,
-    movies: {},
-    actors: {},
-    genres: [],
-    privat: false,
-    start: function() {
-        personalMovieDB.count = +prompt('Сколько фильмов вы уже посмотрели?', '');
-
-        while (personalMovieDB.count == '' || personalMovieDB.count == null || isNaN(personalMovieDB.count)) {
-            personalMovieDB.count = prompt('Сколько фильмов вы уже посмотрели?', '');
-        }
-    },
-    rememberMyFilms: function() {
-        for(let  i = 0; i < 2; i++) {
-            const a = prompt('Один из последних просмотренных фильмов?', '').trim(),
-                  b = prompt('На сколько оцените его?', '');
+//         while (personalMovieDB.count == '' || personalMovieDB.count == null || isNaN(personalMovieDB.count)) {
+//             personalMovieDB.count = prompt('Сколько фильмов вы уже посмотрели?', '');
+//         }
+//     },
+//     rememberMyFilms: function() {
+//         for(let  i = 0; i < 2; i++) {
+//             const a = prompt('Один из последних просмотренных фильмов?', '').trim(),
+//                   b = prompt('На сколько оцените его?', '');
                       
-            if (a != null && b != null && a != '' && b != '' && a.length < 50 ) {
-                personalMovieDB.movies[a] = b;
-                console.log('done!');
-            } else {
-                console.log('error');
-                i--;
-            }      
-        }
-    },
-    detectPersonalLevel: function() {
-        if (personalMovieDB.count < 10) {
-            alert('Просмотрено довольно мало фильмов');
-        } else if (personalMovieDB.count >= 10 && personalMovieDB.count < 30) {
-            alert('Вы классический зритель');
-        } else if (personalMovieDB.count >= 30) {
-            alert('Вы киноман');
-        } else {
-            alert("Произошла ошибка");
-        }
-    },
-    showMyDB: function(hidden) {
-        if (!hidden) {
-            console.log(personalMovieDB);
-        }
-    },
-    writeYourGenres: function() {
-        // for(let i = 0; i < 3; i++) {
-        //     let genre = prompt(`Ваш любимый жанр под номер ${i + 1}`);
-        //     personalMovieDB.genres[i] = genre;
-        //     if(genre === '' || genre == null) {
-        //         console.log('Вы ввели некоректные данные!');
-        //         i--;
-        //     } else {
-        //         personalMovieDB.genres[i] = genre;
-        //     }
-        // }
-            for(let i = 1; i < 2; i++) {
-                let genre = prompt(`Напишите ваши любимые жанры через запятую`).toLowerCase();
+//             if (a != null && b != null && a != '' && b != '' && a.length < 50 ) {
+//                 personalMovieDB.movies[a] = b;
+//                 console.log('done!');
+//             } else {
+//                 console.log('error');
+//                 i--;
+//             }      
+//         }
+//     },
+//     detectPersonalLevel: function() {
+//         if (personalMovieDB.count < 10) {
+//             alert('Просмотрено довольно мало фильмов');
+//         } else if (personalMovieDB.count >= 10 && personalMovieDB.count < 30) {
+//             alert('Вы классический зритель');
+//         } else if (personalMovieDB.count >= 30) {
+//             alert('Вы киноман');
+//         } else {
+//             alert("Произошла ошибка");
+//         }
+//     },
+//     showMyDB: function(hidden) {
+//         if (!hidden) {
+//             console.log(personalMovieDB);
+//         }
+//     },
+//     writeYourGenres: function() {
+//         // for(let i = 0; i < 3; i++) {
+//         //     let genre = prompt(`Ваш любимый жанр под номер ${i + 1}`);
+//         //     personalMovieDB.genres[i] = genre;
+//         //     if(genre === '' || genre == null) {
+//         //         console.log('Вы ввели некоректные данные!');
+//         //         i--;
+//         //     } else {
+//         //         personalMovieDB.genres[i] = genre;
+//         //     }
+//         // }
+//             for(let i = 1; i < 2; i++) {
+//                 let genre = prompt(`Напишите ваши любимые жанры через запятую`).toLowerCase();
 
-                if(genre === '' || genre == null) {
-                    console.log('Вы ввели некоректные данные!');
-                    i--;
-                } else {
-                    personalMovieDB.genres = genre.split(', ');
-                    personalMovieDB.genres.sort();
-                }
-            }
+//                 if(genre === '' || genre == null) {
+//                     console.log('Вы ввели некоректные данные!');
+//                     i--;
+//                 } else {
+//                     personalMovieDB.genres = genre.split(', ');
+//                     personalMovieDB.genres.sort();
+//                 }
+//             }
 
-        return personalMovieDB.genres.forEach((value, index) => {
-            console.log(`Любимый жанр #${index + 1} - это ${value}`);
-        });
+//         return personalMovieDB.genres.forEach((value, index) => {
+//             console.log(`Любимый жанр #${index + 1} - это ${value}`);
+//         });
 
         
-    },
-    toggleVisibleMyDB: function() {
-        if(personalMovieDB.privat) {
-            personalMovieDB.privat = false;
-        } else {
-            personalMovieDB.privat = true;
-        }
-    }
+//     },
+//     toggleVisibleMyDB: function() {
+//         if(personalMovieDB.privat) {
+//             personalMovieDB.privat = false;
+//         } else {
+//             personalMovieDB.privat = true;
+//         }
+//     }
+// };
+// personalMovieDB.writeYourGenres();
+// console.log(personalMovieDB.genres);
+
+
+
+const shoppingMallData = {
+    shops: [
+        {
+            width: 10,
+            length: 5
+        },
+        {
+            width: 15,
+            length: 7
+        },
+        {
+            width: 20,
+            length: 5
+        },
+        {
+            width: 8,
+            length: 10
+        },
+    ],
+    height: 5,
+    moneyPer1m3: 30,
+    budget: 50000
 };
-personalMovieDB.writeYourGenres();
-console.log(personalMovieDB.genres);
+function isBudgetEnough() {
+    
+    // Bычисление общей площади всех магазинов, которая вычисляется как длина магазина, умноженная на его ширину;
+    let areaAllShop = [];
+    let areaAllShops;
+
+    shoppingMallData.shops.map((item, i) => {
+    let arr = Object.values(item);
+    let areaShop = item.width * item.length;
+    areaAllShop[i] = areaShop;
+    });
+
+    areaAllShops = areaAllShop.reduce((a,b) => {
+        return a + b;
+    });
+
+    //Bычисление общего объема торгового центра, так как цена отопления указана в кубических метрах;
+    let totalVolumeMall = areaAllShops * shoppingMallData.height;
+
+    // Определение того, хватает ли бюджета на оплату такого объема;
+    let utilityFee = totalVolumeMall * shoppingMallData.moneyPer1m3;
+
+    if(shoppingMallData.budget > utilityFee) {
+        return 'Бюджета достаточно';
+    } else {
+        return 'Бюджета недостаточно';
+    }
+}
+console.log(isBudgetEnough());
