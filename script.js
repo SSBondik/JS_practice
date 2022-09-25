@@ -655,55 +655,65 @@
 
 
 
-const shoppingMallData = {
-    shops: [
-        {
-            width: 10,
-            length: 5
-        },
-        {
-            width: 15,
-            length: 7
-        },
-        {
-            width: 20,
-            length: 5
-        },
-        {
-            width: 8,
-            length: 10
-        },
-    ],
-    height: 5,
-    moneyPer1m3: 30,
-    budget: 50000
-};
-function isBudgetEnough() {
+// const shoppingMallData = {
+//     shops: [
+//         {
+//             width: 10,
+//             length: 5
+//         },
+//         {
+//             width: 15,
+//             length: 7
+//         },
+//         {
+//             width: 20,
+//             length: 5
+//         },
+//         {
+//             width: 8,
+//             length: 10
+//         },
+//     ],
+//     height: 5,
+//     moneyPer1m3: 30,
+//     budget: 50000
+// };
+// function isBudgetEnough(data) {
     
-    // Bычисление общей площади всех магазинов, которая вычисляется как длина магазина, умноженная на его ширину;
-    let areaAllShop = [];
-    let areaAllShops;
+//     // Bычисление общей площади всех магазинов, которая вычисляется как длина магазина, умноженная на его ширину;
+//     let areaAllShop = [];
+//     let areaAllShops;
 
-    shoppingMallData.shops.map((item, i) => {
-    let arr = Object.values(item);
-    let areaShop = item.width * item.length;
-    areaAllShop[i] = areaShop;
-    });
+//     data.shops.map((item, i) => {
+//     let arr = Object.values(item);
+//     let areaShop = item.width * item.length;
+//     areaAllShop[i] = areaShop;
+//     });
 
-    areaAllShops = areaAllShop.reduce((a,b) => {
-        return a + b;
-    });
+//     areaAllShops = areaAllShop.reduce((a,b) => {
+//         return a + b;
+//     });
 
-    //Bычисление общего объема торгового центра, так как цена отопления указана в кубических метрах;
-    let totalVolumeMall = areaAllShops * shoppingMallData.height;
+//     //Bычисление общего объема торгового центра, так как цена отопления указана в кубических метрах;
+//     let totalVolumeMall = areaAllShops * data.height;
 
-    // Определение того, хватает ли бюджета на оплату такого объема;
-    let utilityFee = totalVolumeMall * shoppingMallData.moneyPer1m3;
+//     // Определение того, хватает ли бюджета на оплату такого объема;
+//     let utilityFee = totalVolumeMall * data.moneyPer1m3;
 
-    if(shoppingMallData.budget > utilityFee) {
-        return 'Бюджета достаточно';
-    } else {
-        return 'Бюджета недостаточно';
-    }
+//     if(data.budget > utilityFee) {
+//         return 'Бюджета достаточно';
+//     } else {
+//         return 'Бюджета недостаточно';
+//     }
+// }
+// console.log(isBudgetEnough(shoppingMallData));
+
+
+const students = ['Peter', 'Andrew', 'Ann', 'Mark', 'Josh', 'Sandra', 'Cris', 'Bernard', 'Takesi', 'Sam', 'Takesi'];
+
+function sortStudentsByGroups(arr) {
+    arr.sort();
+    
 }
-console.log(isBudgetEnough());
+console.log(sortStudentsByGroups(students));
+
