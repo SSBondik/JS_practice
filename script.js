@@ -745,57 +745,125 @@
 // const c3 = increment();
 // console.log(c1, c2, c3);
 
-const restorantData = {
-    menu: [
-        {
-            name: 'Salad Caesar',
-            price: '14$'
-        },
-        {
-            name: 'Pizza Diavola',
-            price: '9$'
-        },
-        {
-            name: 'Beefsteak',
-            price: '17$'
-        },
-        {
-            name: 'Napoleon',
-            price: '7$'
-        }
-    ],
-    waitors: [
-        {name: 'Alice', age: 22}, {name: 'John', age: 24}
-    ],
-    averageLunchPrice: '20$',
-    openNow: true
+// const restorantData = {
+//     menu: [
+//         {
+//             name: 'Salad Caesar',
+//             price: '14$'
+//         },
+//         {
+//             name: 'Pizza Diavola',
+//             price: '9$'
+//         },
+//         {
+//             name: 'Beefsteak',
+//             price: '17$'
+//         },
+//         {
+//             name: 'Napoleon',
+//             price: '7$'
+//         }
+//     ],
+//     waitors: [
+//         {name: 'Alice', age: 22}, {name: 'John', age: 24}
+//     ],
+//     averageLunchPrice: '20$',
+//     openNow: true
+// };
+
+// function isOpen(prop) {
+//     let answer = '';
+//     !prop ? answer = 'Закрыто' : answer = 'Открыто';
+
+//     return answer;
+// }
+
+// console.log(isOpen(restorantData.openNow));
+
+// function isAverageLunchPriceTrue(fDish, sDish, average) { 
+//     if (parseInt(fDish.price) + parseInt(sDish.price) < parseInt(average)) {
+//         return 'Цена ниже средней';
+//     } else {
+//         return 'Цена выше средней';
+//     }
+// }
+
+// console.log(isAverageLunchPriceTrue(restorantData.menu[1], restorantData.menu[2], restorantData.averageLunchPrice));
+
+// function transferWaitors(data) {
+//     const copy = Object.assign({}, data);
+
+//     copy.waitors = [{name: 'Mike', age: 32}];
+//     return copy;
+// }
+
+// console.log(transferWaitors(restorantData));
+// console.log(restorantData);
+
+const btn = document.querySelector('button');
+// onclick - Свойство DOM дерева
+// btn.onclick = function() { //В реальных проэктах редко используется, лучше переделать в новый формат
+//     alert('Click');
+// };
+// btn.onclick = function() { //В реальных проэктах редко используется, лучше переделать в новый формат
+//     alert('Second click');
+// // };
+// Такой формат не может повторяться , выводит только последний обработчик Second click. 
+// Ещё минус после завершения обработки его нельзя удалить автоматически.
+
+// Используем addEventListener(добавляем обработчик события) и removeEventListener(удаляем)
+// btn.addEventListener('click', () => {
+//     alert('Click');
+// });
+// // 'click' - Событие, () => {} - Обработчик события
+// В этом формате можем назначить сразу несколько действий на одно событие
+btn.addEventListener('click', () => {
+    alert('Second click');
+});
+btn.addEventListener('mouseenter', (e) => { // mouseenter - наведение мыши на элемент
+    console.log(e);
+    e.target.remove(); //Удаляем при наводке нашу кнопку
+    // console.log('Hover');
+});
+/* Чтобы узнать что за событие произошло с элементом , что за элемен или координаты 
+   используем объект event или e, передаётся как первий аргемент в нашу колбэк функцию 
+   Самые важные свойства это type(что за событие) и targget(на каком эл произошло событие)*/
+
+// Выносим отдельно функцию 
+// let i = 0;
+// const deleteEvent = (e) => {
+//     console.log(e.target);
+//     i++;
+//     if(i == 1) {
+//         btn.removeEventListener('click', deleteEvent); //Когда условие выполнится обработчик удалится с этой кнопки
+//     }
+// };
+
+// btn.addEventListener('click', deleteEvent); //После клика по эл btn, выполнится функция addEventListener
+//Всплытие события (не путать с хостиногм)
+
+const overlay = document.querySelector('.overlay');
+/*<div class="overlay">
+        <button>Click me</button>
+  </div>*/
+const deleteEvent = (e) => {
+    console.log(e.currentTarget); // чаще используется просто targrt
+    console.log(e.type);
 };
+btn.addEventListener('click', deleteEvent);
+overlay.addEventListener('click', deleteEvent);
+/* Сначало событие произошло в btn(который вложен в overlay), потом поднялось по иерархии вверх
+ и сработало на overlay - это и называется Всплытие событий, когда данное действие срабатывает
+ на вложенном элементе и после поднимается на вверх по иерархии нашего DOM дерева*/
 
-function isOpen(prop) {
-    let answer = '';
-    !prop ? answer = 'Закрыто' : answer = 'Открыто';
+//  Отменяем стандартное поведение браузера
+const link = document.querySelector('a');
 
-    return answer;
-}
+link.addEventListener('click', (event) => {
+    event.preventDefault(); //Отменяем переход по ссылке, помещаем участок кода в самое начало
+    console.log(event.target);
+});
 
-console.log(isOpen(restorantData.openNow));
+//3-й аргемент addEventListener , это опции.
 
-function isAverageLunchPriceTrue(fDish, sDish, average) { 
-    if (parseInt(fDish.price) + parseInt(sDish.price) < parseInt(average)) {
-        return 'Цена ниже средней';
-    } else {
-        return 'Цена выше средней';
-    }
-}
-
-console.log(isAverageLunchPriceTrue(restorantData.menu[1], restorantData.menu[2], restorantData.averageLunchPrice));
-
-function transferWaitors(data) {
-    const copy = Object.assign({}, data);
-
-    copy.waitors = [{name: 'Mike', age: 32}];
-    return copy;
-}
-
-console.log(transferWaitors(restorantData));
-console.log(restorantData);
+btn.addEventListener('click', deleteEvent, {once: true}); //{once: true} - обработчик будет выполняться один раз
