@@ -800,7 +800,7 @@
 // console.log(transferWaitors(restorantData));
 // console.log(restorantData);
 
-const btn = document.querySelector('button');
+// const btn = document.querySelector('button');
 // onclick - Свойство DOM дерева
 // btn.onclick = function() { //В реальных проэктах редко используется, лучше переделать в новый формат
 //     alert('Click');
@@ -817,14 +817,14 @@ const btn = document.querySelector('button');
 // });
 // // 'click' - Событие, () => {} - Обработчик события
 // В этом формате можем назначить сразу несколько действий на одно событие
-btn.addEventListener('click', () => {
-    alert('Second click');
-});
-btn.addEventListener('mouseenter', (e) => { // mouseenter - наведение мыши на элемент
-    console.log(e);
-    e.target.remove(); //Удаляем при наводке нашу кнопку
-    // console.log('Hover');
-});
+// btn.addEventListener('click', () => {
+//     alert('Second click');
+// });
+// btn.addEventListener('mouseenter', (e) => { // mouseenter - наведение мыши на элемент
+//     console.log(e);
+//     e.target.remove(); //Удаляем при наводке нашу кнопку
+//     // console.log('Hover');
+// });
 /* Чтобы узнать что за событие произошло с элементом , что за элемен или координаты 
    используем объект event или e, передаётся как первий аргемент в нашу колбэк функцию 
    Самые важные свойства это type(что за событие) и targget(на каком эл произошло событие)*/
@@ -842,28 +842,153 @@ btn.addEventListener('mouseenter', (e) => { // mouseenter - наведение �
 // btn.addEventListener('click', deleteEvent); //После клика по эл btn, выполнится функция addEventListener
 //Всплытие события (не путать с хостиногм)
 
-const overlay = document.querySelector('.overlay');
+// const overlay = document.querySelector('.overlay');
 /*<div class="overlay">
         <button>Click me</button>
   </div>*/
-const deleteEvent = (e) => {
-    console.log(e.currentTarget); // чаще используется просто targrt
-    console.log(e.type);
-};
-btn.addEventListener('click', deleteEvent);
-overlay.addEventListener('click', deleteEvent);
+// const deleteEvent = (e) => {
+//     console.log(e.currentTarget); // чаще используется просто targrt
+//     console.log(e.type);
+// };
+// btn.addEventListener('click', deleteEvent);
+// overlay.addEventListener('click', deleteEvent);
 /* Сначало событие произошло в btn(который вложен в overlay), потом поднялось по иерархии вверх
  и сработало на overlay - это и называется Всплытие событий, когда данное действие срабатывает
  на вложенном элементе и после поднимается на вверх по иерархии нашего DOM дерева*/
 
 //  Отменяем стандартное поведение браузера
-const link = document.querySelector('a');
+// const link = document.querySelector('a');
 
-link.addEventListener('click', (event) => {
-    event.preventDefault(); //Отменяем переход по ссылке, помещаем участок кода в самое начало
-    console.log(event.target);
-});
+// link.addEventListener('click', (event) => {
+//     event.preventDefault(); //Отменяем переход по ссылке, помещаем участок кода в самое начало
+//     console.log(event.target);
+// });
 
 //3-й аргемент addEventListener , это опции.
+// btn.addEventListener('click', deleteEvent, {once: true}); //{once: true} - обработчик будет выполняться один раз
 
-btn.addEventListener('click', deleteEvent, {once: true}); //{once: true} - обработчик будет выполняться один раз
+// console.log(document.body); //Всё что в теге <body>...</body>
+// console.log(document.documentElement); //Всё что в теге <html>...</html>
+// console.log(document.body.childNodes); //Узлы которые являются детьми body 
+// NodeList(4) [text, div.wrapper, text, script] - результат console.log
+// for(let node of document.body.childNodes) {
+//     if(node.nodeName == '#text') {
+//         continue;
+//     }
+//     console.log(node);
+// }
+// Получение первого и последнего элемента в бади
+// console.log(document.body.firstElementChild); //<div class="wrapper"></div>
+// console.log(document.body.lastElementChild); //<script src="script.js"></script>
+
+// Команды которые позволяют получить соседей, родителей и детей
+// console.log(document.querySelector('#current').parentElement);//Получение родителя родителя нашего эллемента)
+/*  <div class="wrapper">
+        <div class="first">
+            <button></button>
+            <button id="current"></button>
+            <button></button>
+        </div>
+        <div class="second"></div>
+        <div class="third"></div>
+    </div>*/
+
+// Задача получить элем след соседа эл после [data-current='3']
+// console.log(document.querySelector("[data-current='3']").nextElementSibling);
+/*<li>
+    ::marker
+    "4"
+  </li>*/
+
+// Задача получить элем преведущего соседа эл после [data-current='3']
+// console.log(document.querySelector("[data-current='3']").previousElementSibling);
+/*<li>
+    ::marker
+    "2"
+  </li>*/
+
+// const pow = (x, n)=> {
+//     if(n === 1) {
+//         return x;
+//     } else {
+//         return x * pow(x, n - 1);
+//     }
+    
+// };
+// console.log(pow(2,6)); //64
+
+
+let students = {
+    js : [{
+        name: 'John',
+        progress: 100
+    }, {
+        name: 'Ivan',
+        progress: 60
+    }],
+    html: {
+        basic: [{
+            name: 'Peter',
+            progress: 20
+        }, {
+            name: 'Ann',
+            progress: 18
+        }],
+
+        pro: [{
+            name: 'Sam',
+            progress: 10
+        }]
+    }
+};
+
+function getTotalProgressByIteration(data) {
+    let total = 0;
+    let students = 0;
+
+    for(let course of Object.values(data)) { //мы получаем значение объекта Object.values()
+        if(Array.isArray(course)) { // Проверка на массив Array.isArray()
+            students += course.length;
+
+            for(let i = 0; i < course.length; i++){
+                total += course[i].progress;
+            }
+        } else {
+            for(let subCourse of Object.values(course)) { //мы получаем значение объекта Object.values()
+                students += subCourse.length;
+
+                for(let i = 0; i < subCourse.length; i++) {
+                    total += subCourse[i].progress;
+                }
+            }
+        }
+    }
+    return total / students;
+}
+// console.log(getTotalProgressByIteration(students));
+
+
+function getTotalProgressByRecursion(data) {
+    if(Array.isArray(data)) { // Проверка на массив Array.isArray()
+        let total = 0;
+
+        for(let i = 0; i < data.length; i++){
+            total += data[i].progress;
+        }
+
+        return [total, data.length];
+
+    } else {
+        let total = [0, 0];
+
+        for(let subData of Object.values(data)) {
+            const subDataArr = getTotalProgressByRecursion(subData);
+            total[0] += subDataArr[0];
+            total[1] += subDataArr[1];
+        }
+        return total;
+    }
+}
+const result = getTotalProgressByRecursion(students);
+
+console.log(result[0]/result[1]);
