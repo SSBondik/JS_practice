@@ -1004,16 +1004,79 @@
 
 // console.log(sum(4));
 
-function factorial(x) {
-    if( !Number.isInteger(x) || typeof(x) !== 'number') {
-        return 'Неверный формат';
+// function factorial(x) {
+//     if( !Number.isInteger(x) || typeof(x) !== 'number') {
+//         return 'Неверный формат';
+//     }
+//     if(x >= 1) {
+//         return x * factorial(x - 1);
+//     } else {
+//         return 1;
+//     }
+// }
+
+
+// console.log(factorial(6)); //720
+
+// document.addEventListener('DOMContentLoaded',() => { //Для оптимизации
+//     const box = document.querySelector('.box');
+
+//     box.addEventListener('touchstart', (e) => {
+//         e.preventDefault(); // Всегда сразу отменяем стандартное поведение браузера во избежание ошибок
+
+//         console.log(e.touches); 
+//         /*TouchList {0: Touch, length: 1}
+//         0: Touch {identifier: 0, target: div.box, screenX: 275, screenY: 249, clientX: 66, …}
+//         length: 1
+//         [[Prototype]]: TouchList*/
+//     });
+// });
+
+// const p = document.querySelectorAll('p');
+// console.log(p);
+
+
+
+// function loadScript(src){
+//     const script = document.createElement('script');
+//     script.src = src;
+//     script.async = false;
+//     document.body.append(script);
+
+// }
+// loadScript('js/test.js');
+// loadScript('js/some.js');
+
+// const boxes = document.querySelectorAll('.box');
+
+// boxes.forEach(box => {
+//     //Если мы хотим определить именно селектор(необьязательно класс, тег атребут и тд)
+//     if(box.matches('.this')){ //ищем селктор this
+//         console.log(box); //<div class="box this"></div>
+//     }
+// });
+// // Найти первый эл с селектором wrapper который будет у тебя родителем
+// console.log(boxes[0].closest('.wrapper')); //<div class="wrapper">...</div>
+
+//Variant 2
+//б) С помощью метода созданным в js
+
+// const obj = {
+//     name: 'test',
+//     [Symbol.for('id')]: 1 //for - сделали Symbol глобальным(лишили уникальности)
+// };
+
+// console.log(obj[Symbol.for('id')]); //1
+
+
+function amountOfPages(summary){
+    let result = '';
+    for(let i = 1; i <= summary; i++) {
+        result += i;
+        if(result.length == summary) {
+            return i;
+        }
     }
-    if(x >= 1) {
-        return x * factorial(x - 1);
-    } else {
-        return 1;
-    }
+
 }
-
-
-console.log(factorial(6)); //720
+console.log(amountOfPages(5));
