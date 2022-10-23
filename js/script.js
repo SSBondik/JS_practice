@@ -1069,14 +1069,245 @@
 // console.log(obj[Symbol.for('id')]); //1
 
 
-function amountOfPages(summary){
-    let result = '';
-    for(let i = 1; i <= summary; i++) {
-        result += i;
-        if(result.length == summary) {
-            return i;
-        }
-    }
+// function amountOfPages(summary){
+//     let result = '';
+//     for(let i = 1; i <= summary; i++) {
+//         result += i;
+//         if(result.length == summary) {
+//             return i;
+//         }
+//     }
 
+// }
+// console.log(amountOfPages(5));
+
+
+// const user = {
+//     name: "Alex",
+//     surname: "Bondarenko",
+//     birthday: "02/12/2000",
+//     showMyPublicData: function() {
+//         console.log(`${this.name} ${this.surname}`);
+//     }
+// };
+
+// const arr = ['b','a','c'];
+// Array.prototype.someMethod = function(){}; //Создаём метод для массивов
+
+// for(let key in arr) {
+//     console.log(arr[key]);
+// }
+// /*b
+// a
+// c
+// ƒ (){} */ //через перебор For in, метод высветился
+// for(let key of arr) {
+//     console.log(key);
+// }
+// /*b
+// a
+// c */ //через перебор For of, метод не высветился
+
+// const salaries = {
+//     john: 500,
+//     ivan: 1000,
+//     ann: 5000,
+//     sayHello: function() {
+//         console.log('Hello');
+//     }
+// };
+//Что бы сделать объект перебираемым через for of:
+// salaries[Symbol.iterator] = function(){
+//     return {
+//         curent: this.john, //начало (500)
+//         last: this.ann,//конец (5000)
+//         next() { //Метод next должен возвращать объект
+//             if(this.curent < this.last) { //Условие которое контролирует перебор
+//                 this.curent += 500; //Производим перебор по 500 едениц
+//                 return {done: false, value: this.curent};//обновляет наш curent пока условие правдиво
+//             } else {
+//                 return {done: true}; //Возвращаемый объект, когда curent 5000
+//             }
+            
+//         }
+//     };
+// };
+//Вариант через вызов for of
+// for(let res of salaries) {
+//     console.log(res);
+// }
+/*1000
+  1500
+  2000
+  2500
+  3000
+  3500
+  4000
+  4500
+  5000*/
+
+//Вариант через вызов вручную? может понадобится когда мы вызываем такую 
+//команду внутри обычного цикла
+// const iterator = salaries[Symbol.iterator]();
+// console.log(iterator.next());
+//{done: false, value: 1000}
+
+
+// const map = new Map([
+//     [{paper: 400}, 4000]
+// ]);
+
+// const shops = [
+//     {rice: 500},
+//     {oil: 200},
+//     {bread: 50}
+// ];
+
+// const budget = [5000, 2000, 500];
+
+// shops.forEach((shop, i) => {
+//     map.set(shop, budget[i]);
+// });
+
+// console.log(map);
+/*Map(3) {
+  { paper: 400 } => 4000,
+  { rice: 500 } => 5000,
+  { oil: 200 } => 2000,
+  { bread: 50 } => 500
+}*/
+
+// for(let shop of map.keys()) {
+//     console.log(shop);
+// }
+// const goods = [];
+
+// for(let shop of map.keys()) {
+//     goods.push(Object.keys(shop)[0]);
+// }
+// console.log(goods);
+//['paper', 'rice', 'oil', 'bread']
+
+// for(let price of map.value()) {
+//     console.log(price);
+// }
+/*4000
+ 5000
+ 2000
+ 500*/
+
+//  for(let price of map.entries()) {
+//     console.log(price);
+// }
+/*
+(2) [{…}, 4000]
+(2) [{…}, 5000]
+(2) [{…}, 2000]
+(2) [{…}, 500]*/
+
+// for(let [price, shop] of map.entries()) {
+//     console.log(price, shop);
+// }
+/*{paper: 400} 4000
+  {rice: 500} 5000
+  {oil: 200} 2000
+  {bread: 50} 500*/
+
+// map.forEach((price, shop) => {
+//     console.log(shop, price);
+// });
+/*{paper: 400} 4000
+  {rice: 500} 5000
+  {oil: 200} 2000
+  {bread: 50} 500*/
+
+
+// const user = {
+//     name: "Alex",
+//     surname: "Bondarenko",
+//     birthday: "02/12/2000",
+//     showMyPublicData: function() {
+//         console.log(`${this.name} ${this.surname}`);
+//     }
+// };
+
+// const userMap = new Map(Object.entries(user));
+// console.log(userMap);
+//Map(4) {'name' => 'Alex', 'surname' => 'Bondarenko', 'birthday' => '02/12/2000', 'showMyPublicData' => ƒ}
+
+// const newUserObj = Object.fromEntries(userMap);
+// console.log(newUserObj);
+//{name: 'Alex', surname: 'Bondarenko', birthday: '02/12/2000', showMyPublicData: ƒ}
+
+
+// const arr = [1, 1, 2, 2, 4, 5, 6, 4];
+// const set = new Set(arr);
+// console.log(set);
+// Set(5) {1, 2, 4, 5, 6}
+
+// const arr = ['Alex', 'Anna', 'Oleg', 'Alex'];
+// const set = new Set(arr);
+
+// for(let value of set) {
+//     console.log(value);
+// }
+/*Alex
+  Anna
+  Oleg
+  Ivan
+  Fransik*/
+
+// set.forEach((value, valueAgaing, set) => {
+//     console.log(value, valueAgaing);
+// });
+/*Alex Alex
+  Anna Anna
+  Oleg Oleg
+  Ivan Ivan
+  Fransik Fransik*/
+
+//Часто используют как функцию помошник которая фильтрует любой массив
+// function unique(arr) {
+//     return Array.from(new Set(arr));//Array.from() - Создаём массив из чего-то, в нашем случае из нового сета
+// }
+// console.log(unique(arr)); //['Alex', 'Anna', 'Oleg']
+
+
+// const bigNum = 1236547896541236526526526565656526523632;
+// console.log(typeof(bigNum)); //number
+
+// const bigInt = 1236547896541236526526526565656526523632n;
+// console.log(typeof(bigInt)); //bigint
+
+// const sameBigInt = BigInt(1236547896541236526526526565656526523632);
+// console.log(typeof(sameBigInt));//bigint
+
+// console.log(Math.round(5n));
+/*Uncaught TypeError: Cannot convert a BigInt value to a number
+    at Math.round (<anonymous>)*/
+
+// const bigInt = 1n;
+// const num = 2;
+
+// console.log(bigInt + BigInt(num)); //3n
+// console.log(Number(bigInt) + num); //3
+
+
+function isPangram(string) {
+    let str = string.toLowerCase();
+    let arrLetter = [];
+    for(let letter of str) {
+        if(letter == ' ') {
+            continue;
+        }
+        arrLetter.push(letter);
+    }
+    let set = new Set(arrLetter);
+    if(set.size == 26) {
+        return true;
+    } else {
+        return false;
+    }
 }
-console.log(amountOfPages(5));
+
+isPangram('The quick brown fox jumps over the lazy dog'); //true
