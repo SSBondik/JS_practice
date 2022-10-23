@@ -1293,21 +1293,59 @@
 // console.log(Number(bigInt) + num); //3
 
 
-function isPangram(string) {
-    let str = string.toLowerCase();
-    let arrLetter = [];
-    for(let letter of str) {
-        if(letter == ' ') {
-            continue;
-        }
-        arrLetter.push(letter);
-    }
-    let set = new Set(arrLetter);
-    if(set.size == 26) {
-        return true;
-    } else {
-        return false;
-    }
-}
+// function isPangram(string) {
+//     let str = string.toLowerCase();
+//     let arrLetter = [];
+//     for(let letter of str) {
+//         if(letter == ' ') {
+//             continue;
+//         }
+//         arrLetter.push(letter);
+//     }
+//     let set = new Set(arrLetter);
+//     if(set.size == 26) {
+//         return true;
+//     } else {
+//         return false;
+//     }
+// }
 
-isPangram('The quick brown fox jumps over the lazy dog'); //true
+// isPangram('The quick brown fox jumps over the lazy dog'); //true
+
+
+// function deepCount(a){
+//     let total = 0;
+//     for(let i = 0; i < a.length; i++) {
+//         if()
+//     }
+// }
+// const deepCount = ['a', 'b', ['c', 'd', ['f']]];
+
+// function deepCount(a){
+//     let result = 0;
+//     if(a.length === 0) {
+//         return result;
+//     } 
+//     for(let arr of a) {
+//         if(Array.isArray(arr)) {
+//             result += 1;
+//             deepCount(arr);
+//         }   
+//         result += 1;
+//     }
+//     return result;  
+// }
+
+
+
+
+function deepCount(a){
+    let count = a.length;
+    for(let i = 0; i < a.length; i++){
+        if(Array.isArray(a[i])) {
+            count += deepCount(a[i]);
+        }
+    }
+    return count;
+}
+console.log(deepCount(['a', 'b', ['c', 'd', ['f']]]));
