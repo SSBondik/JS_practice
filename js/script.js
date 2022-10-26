@@ -1339,13 +1339,62 @@
 
 
 
-function deepCount(a){
-    let count = a.length;
-    for(let i = 0; i < a.length; i++){
-        if(Array.isArray(a[i])) {
-            count += deepCount(a[i]);
-        }
-    }
-    return count;
-}
-console.log(deepCount(['a', 'b', ['c', 'd', ['f']]]));
+// function deepCount(a){
+//     let count = a.length;
+//     for(let i = 0; i < a.length; i++){
+//         if(Array.isArray(a[i])) {
+//             count += deepCount(a[i]);
+//         }
+//     }
+//     return count;
+// }
+// console.log(deepCount(['a', 'b', ['c', 'd', ['f']]]));
+
+
+
+const btns = document.querySelectorAll('button');
+      
+
+// console.log(btns[0].classList.length); //2 - мы получили кол-во классов у первой кнопки (class="blue some")
+
+// Методы classList
+// console.log(btns[0].classList.item(0)); //blue//Позволяет получить класс под определённым индексом
+// console.log(btns[1].classList.add('red')); //Добавляет класс 'red'
+// console.log(btns[0].classList.remove('blue')); //Удаляет класс 'blue'
+// console.log(btns[0].classList.toogle('blue')); //Если класс есть на элл, то 
+//класс будет убран, если его нет, то добавлен
+
+// Проверка на определенный класс, возвращает булинновое значение
+// if(btns[1].classList.contains('red')) {
+//   console.log('red');
+// }
+
+// btns[0].addEventListener('click', () => {
+//   // if(!btns[1].classList.contains('red')) { //Мы проверяем наличие у второй кнопки класса red
+//   //     btns[1].classList.add('red'); //Если его нет, то мы его добавляем
+//   // } else {
+//   //   btns[1].classList.remove('red');//Если он есть то мы его удаляем
+//   // }
+//   //Вариант короче, но с большими скриптами лучше пользоваться вариантом 1
+//   btns[1].classList.toggle('red');
+
+// });
+// Делегирование это если предмет подходит под условие то на нём будет срабатывать функция 
+const wrapper = document.querySelector('.btn-block');
+
+wrapper.addEventListener('click', (event) => {
+  if(event.target && event.target.matches("button.red")){ //Дословно, найди мне тег button с классом red
+    console.log('Hello!');
+  }
+});
+
+// btns.forEach(btn => {
+//   btn.addEventListener('click', () => { //Не работает на динамически созданных кнопках
+//     console.log('Hello');
+//   });
+// });
+
+//Динамически созданная кнопка
+const btn = document.createElement('button');
+btn.classList.add('red');
+wrapper.append(btn);
